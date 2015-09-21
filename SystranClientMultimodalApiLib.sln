@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystranClientMultimodalApiLib", "SystranClientMultimodalApiLib\SystranClientMultimodalApiLib.csproj", "{AAC8AC12-ED49-4C08-960E-1779CE2FD926}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystranClientMultimodalApiLibTests", "SystranClientMultimodalApiLibTests\SystranClientMultimodalApiLibTests.csproj", "{CCAE6A84-BE83-435E-BF72-39C81D64FF51}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AAC8AC12-ED49-4C08-960E-1779CE2FD926}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAC8AC12-ED49-4C08-960E-1779CE2FD926}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAC8AC12-ED49-4C08-960E-1779CE2FD926}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAC8AC12-ED49-4C08-960E-1779CE2FD926}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCAE6A84-BE83-435E-BF72-39C81D64FF51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCAE6A84-BE83-435E-BF72-39C81D64FF51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCAE6A84-BE83-435E-BF72-39C81D64FF51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCAE6A84-BE83-435E-BF72-39C81D64FF51}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
