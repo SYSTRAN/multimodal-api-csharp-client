@@ -48,7 +48,6 @@ namespace Systran.MultimodalClientLib.Client {
 
     public async Task<Object> CallApiAsync(String Path, RestSharp.Method Method, Dictionary<String, String> QueryParams, String PostBody,
       Dictionary<String, String> HeaderParams, Dictionary<String, String> FormParams, Dictionary<String, String> FileParams, String[] AuthSettings) {
-
       var request = new RestRequest(Path, Method);
 
       UpdateParamsForAuth(QueryParams, HeaderParams, AuthSettings);
@@ -65,19 +64,21 @@ namespace Systran.MultimodalClientLib.Client {
       foreach(KeyValuePair<string, string> param in QueryParams)
         request.AddQueryParameter(param.Key, param.Value);
 
-      // add form parameter, if any
-      foreach(KeyValuePair<string, string> param in FormParams)
-        request.AddParameter(param.Key, param.Value);
+        // add form parameter, if any
+        foreach (KeyValuePair<string, string> param in FormParams)
+            request.AddParameter(param.Key, param.Value);
 
-      // add file parameter, if any
-      foreach(KeyValuePair<string, string> param in FileParams)
-        request.AddFile(param.Key, param.Value);
+        // add file parameter, if any
+        foreach (KeyValuePair<string, string> param in FileParams)
+            {
+                request.AddFile(param.Key, param.Value);
+                request.Method = Method.POST;
+            }
+            if (PostBody != null) {
+                request.AddParameter("application/json", PostBody, ParameterType.RequestBody); // http body (model) parameter
 
-      if (PostBody != null) {
-        request.AddParameter("application/json", PostBody, ParameterType.RequestBody); // http body (model) parameter
-      }
-
-      return (Object) await restClient.ExecuteTaskAsync(request);
+            }
+            return (Object) await restClient.ExecuteTaskAsync(request);
 
     }
 

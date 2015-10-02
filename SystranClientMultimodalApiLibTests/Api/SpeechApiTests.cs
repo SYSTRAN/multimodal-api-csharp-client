@@ -21,11 +21,11 @@ namespace Systran.MultimodalClientLib.Api.Tests
         [ClassInitialize()]
         public static void ClassInit(TestContext context)
         {
-            client = new ApiClient("https://platform.systran.net:8904");
+            client = new ApiClient("https://platformapi-stag.systran.net:8904");
             Configuration.apiClient = client;
             Dictionary<String, String> keys = new Dictionary<String, String>();
             string key;
-            using (StreamReader streamReader = new StreamReader("../../key.txt", Encoding.UTF8))
+            using (StreamReader streamReader = new StreamReader("../../ApiKey.txt", Encoding.UTF8))
             {
                 key = streamReader.ReadToEnd();
             }
@@ -44,7 +44,7 @@ namespace Systran.MultimodalClientLib.Api.Tests
         public void MultimodalSpeechAlignGetTest()
         {
             SpeechAlignResponse speechAlignResponse = new SpeechAlignResponse();
-            speechAlignResponse = speechApi.MultimodalSpeechAlignGet("speech-lid.mp3", "align.txt", "en", null, null, null);
+            speechAlignResponse = speechApi.MultimodalSpeechAlignGet("../../speech-lid.mp3", "../../test.txt", "en", null, null, null);
             Assert.IsNotNull(speechAlignResponse.Segments);
         }
 
@@ -54,7 +54,7 @@ namespace Systran.MultimodalClientLib.Api.Tests
             SpeechAlignResponse speechAlignResponse = new SpeechAlignResponse();
             Task.Run(async () =>
             {
-                speechAlignResponse = await speechApi.MultimodalSpeechAlignGetAsync("speech-lid.mp3", "align.txt", "en", null, null, null);
+                speechAlignResponse = await speechApi.MultimodalSpeechAlignGetAsync("../../speech-lid.mp3", "align.txt", "en", null, null, null);
             }).Wait();
             Assert.IsNotNull(speechAlignResponse.Segments);
         }
@@ -63,7 +63,7 @@ namespace Systran.MultimodalClientLib.Api.Tests
         public void MultimodalSpeechDetectLanguageGetTest()
         {
             SpeechDetectLanguageResponse speechDetectLanguageResponse = new SpeechDetectLanguageResponse();
-            speechDetectLanguageResponse = speechApi.MultimodalSpeechDetectLanguageGet("speech-lid.mp3", null, null, null);
+            speechDetectLanguageResponse = speechApi.MultimodalSpeechDetectLanguageGet("../../speech-lid.mp3", null, null, null);
             Assert.IsNotNull(speechDetectLanguageResponse.Segments);
         }
 
@@ -73,7 +73,7 @@ namespace Systran.MultimodalClientLib.Api.Tests
             SpeechDetectLanguageResponse speechDetectLanguageResponse = new SpeechDetectLanguageResponse();
             Task.Run(async () =>
             {
-                speechDetectLanguageResponse = await speechApi.MultimodalSpeechDetectLanguageGetAsync("speech-lid.mp3", null, null, null);
+                speechDetectLanguageResponse = await speechApi.MultimodalSpeechDetectLanguageGetAsync("../../speech-lid.mp3", null, null, null);
             }).Wait();
             Assert.IsNotNull(speechDetectLanguageResponse.Segments);
         }
@@ -82,7 +82,7 @@ namespace Systran.MultimodalClientLib.Api.Tests
         public void MultimodalSpeechSegmentGetTest()
         {
             SpeechSegmentResponse speechSegmentResponse = new SpeechSegmentResponse();
-            speechSegmentResponse = speechApi.MultimodalSpeechSegmentGet("speech-lid.mp3", null, null, null);
+            speechSegmentResponse = speechApi.MultimodalSpeechSegmentGet("../../speech-lid.mp3", null, null, null);
             Assert.IsNotNull(speechSegmentResponse.Segments);
         }
 
@@ -92,7 +92,7 @@ namespace Systran.MultimodalClientLib.Api.Tests
             SpeechSegmentResponse speechSegmentResponse = new SpeechSegmentResponse();
             Task.Run(async () =>
             {
-                speechSegmentResponse = await speechApi.MultimodalSpeechSegmentGetAsync("speech-lid.mp3", null, null, null);
+                speechSegmentResponse = await speechApi.MultimodalSpeechSegmentGetAsync("../../speech-lid.mp3", null, null, null);
             }).Wait();
             Assert.IsNotNull(speechSegmentResponse.Segments);
         }

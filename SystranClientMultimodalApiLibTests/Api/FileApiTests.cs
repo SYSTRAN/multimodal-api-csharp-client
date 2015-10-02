@@ -21,11 +21,11 @@ namespace Systran.MultimodalClientLib.Api.Tests
         [ClassInitialize()]
         public static void ClassInit(TestContext context)
         {
-            client = new ApiClient("https://platform.systran.net:8904");
+            client = new ApiClient("https://platformapi-stag.systran.net:8904");
             Configuration.apiClient = client;
             Dictionary<String, String> keys = new Dictionary<String, String>();
             string key;
-            using (StreamReader streamReader = new StreamReader("../../key.txt", Encoding.UTF8))
+            using (StreamReader streamReader = new StreamReader("../../ApiKey.txt", Encoding.UTF8))
             {
                 key = streamReader.ReadToEnd();
             }
@@ -48,7 +48,7 @@ namespace Systran.MultimodalClientLib.Api.Tests
             // string input = Convert.ToBase64String(File.ReadAllBytes("test.txt"));
 
             FileExtractTextResponse fileExtractTextResponse = new FileExtractTextResponse();
-            fileExtractTextResponse = fileApi.MultimodalFileExtractTextGet("test.txt", "en", null, null, null);
+            fileExtractTextResponse = fileApi.MultimodalFileExtractTextGet("../../test.txt", "en", null, null, null);
             Assert.IsNotNull(fileExtractTextResponse.Text);
         }
 
@@ -58,7 +58,7 @@ namespace Systran.MultimodalClientLib.Api.Tests
             FileExtractTextResponse fileExtractTextResponse = new FileExtractTextResponse();
             Task.Run(async () =>
             {
-                fileExtractTextResponse = await fileApi.MultimodalFileExtractTextGetAsync("test.txt", "en", null, null, null);
+                fileExtractTextResponse = await fileApi.MultimodalFileExtractTextGetAsync("../../test.txt", "en", null, null, null);
             }).Wait();
             Assert.IsNotNull(fileExtractTextResponse.Text);
         }
