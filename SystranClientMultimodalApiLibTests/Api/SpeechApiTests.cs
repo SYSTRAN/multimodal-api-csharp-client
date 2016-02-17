@@ -21,11 +21,11 @@ namespace Systran.MultimodalClientLib.Api.Tests
         [ClassInitialize()]
         public static void ClassInit(TestContext context)
         {
-            client = new ApiClient("https://platformapi-stag.systran.net:8904");
+            client = new ApiClient("https://platform.systran.net:8904");
             Configuration.apiClient = client;
             Dictionary<String, String> keys = new Dictionary<String, String>();
             string key;
-            using (StreamReader streamReader = new StreamReader("../../ApiKey.txt", Encoding.UTF8))
+            using (StreamReader streamReader = new StreamReader("../../apiKey.txt", Encoding.UTF8))
             {
                 key = streamReader.ReadToEnd();
             }
